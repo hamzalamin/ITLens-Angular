@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'ITLens-Angular' title`, () => {
+  it(`should have the 'hamza Lamin' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('ITLens-Angular');
+    expect(app.title).toEqual('hamza Lamin');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, ITLens-Angular');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, hamza Lamin');
   });
 });
