@@ -1,0 +1,26 @@
+<nav class="bg-violet-500 p-4 shadow-md">
+  <div class="container mx-auto flex justify-between items-center">
+    <div class="text-white text-xl font-mono">
+      ITLens
+    </div>
+
+    <div class="hidden md:flex space-x-4">
+      <a href="#"
+         class="text-white border-b-2 border-transparent hover:border-violet-950 hover:text-violet-950 transition-all duration-300 font-mono">
+        Home
+      </a>
+    </div>
+
+
+    <button (click)="toggleMenu()" class="md:hidden text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<div *ngIf="isMenuOpen" class="md:hidden bg-violet-500">
+  <a href="#"
+     class="block text-white p-4 border-transparent hover:border-violet-950 hover:text-violet-950 transition-all duration-300 font-mono">Home</a>
+</div>
