@@ -6,5 +6,5 @@ export interface Survey{
   title: String,
   description: String,
   owner: Owner,
-  surveyEdition: SurveyEdition[],
+  surveyEditions: SurveyEdition[],
 }

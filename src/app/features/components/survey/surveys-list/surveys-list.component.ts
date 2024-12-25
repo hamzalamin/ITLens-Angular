@@ -18,6 +18,7 @@ export class SurveysListComponent implements OnInit {
     this.SurveyService.getSurveys().subscribe({
       next: (data) => {
         this.surveys = data;
+        console.log(this.surveys);
       },
       error: (err) => {
         console.error('Error fetching surveys:', err);

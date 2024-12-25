@@ -1,9 +1,36 @@
 <div class="container">
-  <h2>Surveys List</h2>
-  @for (survey of surveys; track survey.id) {
-    <div>{{ survey.title }}</div>
-    <div>{{ survey.description }}</div>
-    <div>{{ survey.owner.name }}</div>
+  <h2 class="text-4xl font-bold text-center text-blue-500">Surveys List</h2>
+  <div *ngFor="let survey of surveys">
+    <div class="relative flex flex-col my-6 bg-white shadow-lg border border-slate-200 rounded-lg w-96 overflow-hidden">
 
-  }
+      <div class="mx-3 mb-0 border-b border-slate-200 pt-3 pb-2 px-1">
+        <span class="text-xl text-blue-600 font-semibold">
+          {{ survey.title }}
+        </span>
+      </div>
+
+      <div class="p-4">
+        <p class="text-slate-600 leading-normal font-light">
+          {{ survey.description }}
+        </p>
+      </div>
+
+      <div class="p-4">
+        <p class="text-slate-600 font-medium">Survey Creator: <span class="font-semibold">{{ survey.owner.name }}</span></p>
+      </div>
+
+      <div *ngIf="survey.surveyEditions && survey.surveyEditions.length > 0" class="p-4">
+        <h3 class="text-lg font-semibold text-slate-700">Survey Editions</h3>
+        <div *ngFor="let edition of survey.surveyEditions" class="my-2">
+          <button class="text-blue-500 font-medium py-1 px-3 border border-blue-500 rounded hover:bg-blue-100">
+            Edition Date: {{ edition.date }}
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="!survey.surveyEditions || survey.surveyEditions.length == 0" class="p-4 text-center text-slate-500">
+        <p>No survey editions available.</p>
+      </div>
+    </div>
+  </div>
 </div>
