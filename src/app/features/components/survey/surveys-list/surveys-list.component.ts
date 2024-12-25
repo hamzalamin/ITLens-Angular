@@ -2,10 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Survey } from '../../../models/survey.model';
 import { SurveyListService } from '../../../services/survey-list.service';
 import { CommonModule } from '@angular/common';
+import {SurveysItemComponent} from '../surveys-item/surveys-item.component';
 
 @Component({
   selector: 'app-surveys-list',
-  imports: [CommonModule],
+  imports: [CommonModule, SurveysItemComponent],
   templateUrl: './surveys-list.component.html',
   standalone: true,
   styleUrl: './surveys-list.component.css'
