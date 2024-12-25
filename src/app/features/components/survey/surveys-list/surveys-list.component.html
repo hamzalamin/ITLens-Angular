@@ -1,0 +1,9 @@
+<div class="container">
+  <h2>Surveys List</h2>
+  @for (survey of surveys; track survey.id) {
+    <div>{{ survey.title }}</div>
+    <div>{{ survey.description }}</div>
+    <div>{{ survey.owner.name }}</div>
+
+  }
+</div>

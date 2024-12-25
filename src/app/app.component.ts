@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {SurveysListComponent} from './features/components/survey/surveys-list/surveys-list.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [SurveysListComponent],
   templateUrl: './app.component.html',
   standalone: true,
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'hamza Lamin';
-  test = 'tic toc';
 }
