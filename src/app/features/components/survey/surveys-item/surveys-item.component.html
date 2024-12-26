@@ -24,7 +24,9 @@
         <div class="flex flex-wrap gap-2">
           @for (edition of survey.surveyEditions; track $index) {
             <button
-              class="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-violet-600 bg-violet-50 hover:bg-violet-100 transition-colors duration-200">
+              class="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-violet-600 bg-violet-50 hover:bg-violet-100 transition-colors duration-200"
+              [routerLink]="['/edition', edition.id]"
+            >
               {{ edition.date }}
             </button>
           }
@@ -35,6 +37,5 @@
         <p>No survey editions available</p>
       </div>
     }
-
   </div>
 </div>

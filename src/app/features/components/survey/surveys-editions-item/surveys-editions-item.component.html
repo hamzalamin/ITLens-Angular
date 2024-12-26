@@ -1,1 +1,36 @@
-<p>surveys-editions-item works!</p>
+@if (surveyEdition) {
+  <div class="survey-edition">
+    <h2>Survey Edition Details</h2>
+
+    <div class="edition-info">
+      <p><strong>Edition ID:</strong> {{ surveyEdition.id }}</p>
+      <p><strong>Creation Date:</strong> {{ surveyEdition.creationDate }}</p>
+      <p><strong>Start Date:</strong> {{ surveyEdition.startDate }}</p>
+      <p><strong>Year:</strong> {{ surveyEdition.date }}</p>
+    </div>
+
+    @if (surveyEdition.survey) {
+      <div class="survey-info">
+        <h3>Survey Information</h3>
+        <p><strong>Survey ID:</strong> {{ surveyEdition.survey.id }}</p>
+        <p><strong>Title:</strong> {{ surveyEdition.survey.title }}</p>
+        <p><strong>Description:</strong> {{ surveyEdition.survey.description }}</p>
+      </div>
+    }
+    @if (surveyEdition.subjects.length > 0) {
+      <div class="subjects">
+        <h3>Subjects</h3>
+        <ul>
+          @for (subject of surveyEdition.subjects; track subject.id) {
+            <li>
+            </li>
+          }
+        </ul>
+      </div>
+    }
+  </div>
+} @else if (!surveyEdition) {
+  <div>
+    Loading...
+  </div>
+}

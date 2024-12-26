@@ -3,16 +3,19 @@ import { Survey } from '../../../models/survey.model';
 import { SurveyListService } from '../../../services/survey-list.service';
 import { CommonModule } from '@angular/common';
 import {SurveysItemComponent} from '../surveys-item/surveys-item.component';
+import {RouterOutlet} from '@angular/router';
+import {SurveysEditionsItemComponent} from '../surveys-editions-item/surveys-editions-item.component';
 
 @Component({
   selector: 'app-surveys-list',
-  imports: [CommonModule, SurveysItemComponent],
+  imports: [CommonModule, SurveysItemComponent, RouterOutlet, SurveysEditionsItemComponent],
   templateUrl: './surveys-list.component.html',
   standalone: true,
   styleUrl: './surveys-list.component.css'
 })
 export class SurveysListComponent implements OnInit {
   surveys!: Survey[];
+  selectedEdition!: any;
   SurveyService = inject(SurveyListService);
 
   ngOnInit() {
@@ -26,4 +29,5 @@ export class SurveysListComponent implements OnInit {
       }
     });
   }
+
 }

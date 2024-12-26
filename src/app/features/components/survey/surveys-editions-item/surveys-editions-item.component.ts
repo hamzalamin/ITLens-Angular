@@ -1,12 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import {SurveyEditionService} from '../../../services/survey-edition.service';
 
 @Component({
   selector: 'app-surveys-editions-item',
-  imports: [],
+  imports: [CommonModule],
   standalone: true,
   templateUrl: './surveys-editions-item.component.html',
   styleUrl: './surveys-editions-item.component.css'
 })
-export class SurveysEditionsItemComponent {
+export class SurveysEditionsItemComponent implements OnInit {
+  surveyEdition: any;
+  id: number = 0;
 
+  constructor(
+    private route: ActivatedRoute,
+    private surveyEditionService: SurveyEditionService
+  ) {}
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.id = +params['id'];
+      this.loadSurveyEdition();
+    });
+  }
+
+  loadSurveyEdition() {
+    this.surveyEditionService.getSurveyEditionById(this.id)
+      .subscribe({
+        next: (data) => {
+          this.surveyEdition = data;
+          console.log('Données récupérées:', this.surveyEdition);
+        },
+        error: (error) => {
+          console.error('Erreur lors de la récupération:', error);
+        }
+      });
+  }
 }
