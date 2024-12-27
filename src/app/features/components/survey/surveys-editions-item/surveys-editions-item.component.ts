@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {SurveyEditionService} from '../../../services/survey-edition.service';
+import {SurveyEdition} from '../../../models/survey-edition.model';
 
 @Component({
   selector: 'app-surveys-editions-item',
@@ -11,7 +12,7 @@ import {SurveyEditionService} from '../../../services/survey-edition.service';
   styleUrl: './surveys-editions-item.component.css'
 })
 export class SurveysEditionsItemComponent implements OnInit {
-  surveyEdition: any;
+  surveyEdition!: SurveyEdition;
   id: number = 0;
 
   constructor(
