@@ -1,53 +1,51 @@
 <div class="min-h-screen bg-gradient-to-r from-violet-200 to-violet-400 p-6 mt-12">
   @if (surveyEdition) {
 
-    <div class="bg-violet-50 rounded-lg shadow-sm p-6 mb-6">
+    <div class="bg-violet-100 rounded-lg shadow-sm p-6 mb-6 border border-violet-300">
       <div class="mb-6">
         <h1 class="flex items-baseline gap-3">
-          <span class="text-2xl font-mono text-violet-600">Survey Title:</span>
+          <span class="text-2xl font-mono text-violet-700">Survey Title:</span>
           <span class="text-3xl font-mono text-gray-800">{{ surveyEdition.survey.title }}</span>
         </h1>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="bg-violet-100 p-4 rounded-md">
-          <span class="text-sm font-mono text-violet-500">Year</span>
-          <p class="text-lg font-mono font-semibold text-violet-700">{{ surveyEdition.date }}</p>
+        <div class="bg-violet-50 p-4 rounded-md shadow-sm border border-violet-300">
+          <span class="text-sm font-mono text-violet-600">Year</span>
+          <p class="text-lg font-mono font-semibold text-violet-800">{{ surveyEdition.date }}</p>
         </div>
-        <div class="bg-violet-100 p-4 rounded-md">
-          <span class="text-sm font-mono text-violet-500">Create Date</span>
-          <p class="text-lg font-mono font-semibold text-violet-700">{{ surveyEdition.creationDate }}</p>
+        <div class="bg-violet-50 p-4 rounded-md shadow-sm border border-violet-300">
+          <span class="text-sm font-mono text-violet-600">Create Date</span>
+          <p class="text-lg font-mono font-semibold text-violet-800">{{ surveyEdition.creationDate }}</p>
         </div>
-        <div class="bg-violet-100 p-4 rounded-md">
-          <span class="text-sm font-mono text-violet-500">Start Date</span>
-          <p class="text-lg font-mono font-semibold text-violet-700">{{ surveyEdition.startDate }}</p>
+        <div class="bg-violet-50 p-4 rounded-md shadow-sm border border-violet-300">
+          <span class="text-sm font-mono text-violet-600">Start Date</span>
+          <p class="text-lg font-mono font-semibold text-violet-800">{{ surveyEdition.startDate }}</p>
         </div>
       </div>
     </div>
 
-    <div class="bg-violet-50 rounded-lg shadow-sm p-6">
+    <div class="bg-violet-100 rounded-lg shadow-sm p-6 border border-violet-300">
       <h2 class="text-xl font-mono font-semibold text-gray-800 mb-4">Subjects</h2>
 
       @if (surveyEdition.subjects.length > 0) {
         <div class="space-y-4">
           @for (subject of surveyEdition.subjects; track subject.id) {
-            <!-- Parent Subject -->
             <div class="subject-tree">
               <button
-                class="w-full text-left flex items-center font-mono text-violet-800 font-medium bg-violet-100 p-2 rounded-md hover:bg-violet-200 transition">
-                <!-- Parent Triangle -->
+                class="w-full text-left flex items-center font-mono text-violet-800 font-medium bg-violet-200 p-2 rounded-md hover:bg-violet-300 transition">
                 <span class="mr-2 text-violet-700">▾</span>
                 {{ subject.title }}
               </button>
 
-              <!-- SubSubjects -->
               @if (subject.subSubjects.length > 0) {
                 <div class="ml-6 mt-2 space-y-2">
                   @for (subSubject of subject.subSubjects; track subSubject.id) {
                     <div class="flex items-center">
-                      <!-- Sub-Subject Triangle -->
-                      <span class="mr-2 text-violet-500">◁</span>
+                      <span class="mr-2 text-violet-600">▷</span>
                       <button
-                        class="w-full text-left flex items-center text-violet-600 font-mono bg-violet-50 p-2 rounded-md hover:bg-violet-100 transition">
+                        [routerLink]="['/subject', subSubject.id, 'questions']"
+                        class="w-full text-left flex items-center text-violet-700 font-mono bg-violet-50 p-2 rounded-md shadow-sm hover:bg-violet-100 transition border border-violet-200"
+                      >
                         {{ subSubject.title }}
                       </button>
                     </div>
@@ -60,9 +58,6 @@
       } @else {
         <p class="font-mono text-gray-500">No subjects available</p>
       }
-
-
-
     </div>
   } @else {
     <div class="flex justify-center items-center h-64">

@@ -15,7 +15,6 @@ import {SurveysEditionsItemComponent} from '../surveys-editions-item/surveys-edi
 })
 export class SurveysListComponent implements OnInit {
   surveys!: Survey[];
-  selectedEdition!: any;
   SurveyService = inject(SurveyListService);
 
   ngOnInit() {

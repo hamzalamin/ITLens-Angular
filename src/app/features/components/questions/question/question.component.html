@@ -1,0 +1,38 @@
+<div class="min-h-screen bg-gradient-to-r from-violet-200 to-violet-400 p-6 mt-12">
+  <div class="max-w-3xl mx-auto text-center">
+    <h1 class="text-4xl font-mono text-gray-800 mb-8 mt-8">
+      Welcome to the Questions Page
+    </h1>
+
+    <p class="text-xl text-gray-600 mb-8 font-mono">
+      Here, you can explore the questions related to the selected subject.
+      Browse through the list to find detailed information and insights.
+    </p>
+
+  </div>
+  <div class="">
+    <div class="bg-violet-100 rounded-lg shadow-sm p-6 mb-6 border border-violet-300">
+      <h2 class="text-xl font-mono font-semibold text-gray-800 mb-4">Questions for {{ subject?.title }}</h2>
+      <div class="space-y-4">
+        @if (subject.questions.length > 0) {
+          <div>
+            @for (question of subject.questions; track subjectId) {
+
+              <div
+                class="p-4 bg-violet-50 rounded-md shadow-sm border border-violet-200 flex justify-between items-center"
+              >
+                <p class="font-mono text-gray-700">{{ question.text }}</p>
+
+                <p class="font-mono text-violet-600 text-sm font-semibold">
+                  {{ question.questionType }}
+                </p>
+              </div>
+            }
+          </div>
+        }
+
+      </div>
+    </div>
+
+  </div>
+</div>
