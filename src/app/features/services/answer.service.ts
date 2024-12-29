@@ -7,7 +7,7 @@ import {Question} from '../models/question.model';
   providedIn: 'root'
 })
 export class AnswerService {
-  private readonly apiUrl = "http://localhost:8888/questions/1";
+  private readonly apiUrl = "http://localhost:8888/questions";
   constructor(private http: HttpClient) { }
 
   getAnswersOfQuestionById(id: number): Observable<Question>{
