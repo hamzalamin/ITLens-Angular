@@ -9,11 +9,6 @@
         Help us improve by sharing your valuable feedback. Your opinion matters and will shape our future services.
       </p>
 
-      <button
-        class="bg-violet-600 hover:bg-violet-700 text-white font-mono py-3 px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500">
-        Create Your Own Survey
-      </button>
-
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 max-w-4xl mx-auto text-center">
@@ -55,6 +50,16 @@
     @for (survey of surveys; track survey.id){
         <app-surveys-item [survey]="survey"></app-surveys-item>
     }
+  </div>
+  <div class="max-w-3xl mx-auto mt-8 text-center">
+
+
+    <button
+      [routerLink]="'/create/survey'"
+      class="bg-violet-600 hover:bg-violet-700 text-white font-mono py-3 px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500">
+      Create Your Own Survey
+    </button>
+
   </div>
 </div>
 
