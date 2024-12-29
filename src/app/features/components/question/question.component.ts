@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {Subject} from '../../../models/subject.model';
-import {ActivatedRoute} from '@angular/router';
-import {QuestionService} from '../../../services/question.service';
+import {Subject} from '../../models/subject.model';
+import {ActivatedRoute, RouterLink} from '@angular/router';
+import {QuestionService} from '../../services/question.service';
 
 @Component({
   selector: 'app-question',
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   standalone: true,
   templateUrl: './question.component.html',
   styleUrl: './question.component.css'

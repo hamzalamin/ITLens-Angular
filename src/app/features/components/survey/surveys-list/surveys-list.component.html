@@ -53,10 +53,7 @@
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     @for (survey of surveys; track survey.id){
-        <app-surveys-item
-          [survey]="survey"
-          >
-        </app-surveys-item>
+        <app-surveys-item [survey]="survey"></app-surveys-item>
     }
   </div>
 </div>
