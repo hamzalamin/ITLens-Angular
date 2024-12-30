@@ -24,5 +24,14 @@ export class SurveyListService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
+  updateSurvey(id: string, updatedSurvey: Survey): Observable<Survey> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put<Survey>(url, updatedSurvey);
+  }
+
+  getSurveyById(id: string): Observable<Survey> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<Survey>(url);
+  }
 
 }

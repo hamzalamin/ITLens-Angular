@@ -5,7 +5,8 @@ import {
 import {SurveysListComponent} from './features/components/survey/surveys-list/surveys-list.component';
 import {QuestionComponent} from './features/components/question/question.component';
 import {AnswerComponent} from './features/components/answer/answer.component';
-import {CreateSurveyComponent} from './features/components/survey/create-survey/create-survey.component';
+import {CreateSurveyComponent} from './features/components/survey/CRUDSurvey/create-survey/create-survey.component';
+import {UpdateSurveyComponent} from './features/components/survey/CRUDSurvey/update-survey/update-survey.component';
 
 export const routes: Routes = [
   { path: '', component: SurveysListComponent},
@@ -14,5 +15,5 @@ export const routes: Routes = [
   { path: 'subject/:id/questions', component: QuestionComponent },
   { path: 'question/:id/answers', component: AnswerComponent },
   { path: 'create/survey', component: CreateSurveyComponent},
-
+  {  path: 'surveys-update/:id', component: UpdateSurveyComponent}
 ];

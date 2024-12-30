@@ -30,9 +30,7 @@ export class SurveysListComponent implements OnInit {
   }
 
   handleDelete(id: string): void {
-    console.log('Deleting survey with ID:', id);
     this.surveys = this.surveys.filter((survey) => Number(survey.id) !== Number(id));
-    console.log('Updated surveys array:', this.surveys);
     this.cdr.detectChanges();
   }
 
