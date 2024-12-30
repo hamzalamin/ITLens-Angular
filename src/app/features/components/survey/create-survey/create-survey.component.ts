@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Survey} from '../../../models/survey.model';
 import {SurveyListService} from '../../../services/survey-list.service';
 import {FormsModule} from '@angular/forms';
@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
   ],
   standalone: true,
   templateUrl: './create-survey.component.html',
+  styleUrl: './create-survey.component.css'
 })
 export class CreateSurveyComponent {
   newSurvey: Survey = {
@@ -33,5 +34,9 @@ export class CreateSurveyComponent {
         console.log("errror here", err);
       }
     });
+
+
+
+
   }
 }

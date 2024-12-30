@@ -1,14 +1,13 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
 import { Survey } from '../../../models/survey.model';
 import { SurveyListService } from '../../../services/survey-list.service';
 import { CommonModule } from '@angular/common';
 import {SurveysItemComponent} from '../surveys-item/surveys-item.component';
-import {RouterLink, RouterOutlet} from '@angular/router';
-import {SurveysEditionsItemComponent} from '../surveys-editions-item/surveys-editions-item.component';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-surveys-list',
-  imports: [CommonModule, SurveysItemComponent, RouterOutlet, SurveysEditionsItemComponent, RouterLink],
+  imports: [CommonModule, SurveysItemComponent, RouterLink],
   templateUrl: './surveys-list.component.html',
   standalone: true,
   styleUrl: './surveys-list.component.css'
@@ -16,6 +15,7 @@ import {SurveysEditionsItemComponent} from '../surveys-editions-item/surveys-edi
 export class SurveysListComponent implements OnInit {
   surveys!: Survey[];
   SurveyService = inject(SurveyListService);
+  private cdr = inject(ChangeDetectorRef);
 
   ngOnInit() {
     this.SurveyService.getSurveys().subscribe({
@@ -27,6 +27,13 @@ export class SurveysListComponent implements OnInit {
         console.error('Error fetching surveys:', err);
       }
     });
+  }
+
+  handleDelete(id: string): void {
+    console.log('Deleting survey with ID:', id);
+    this.surveys = this.surveys.filter((survey) => Number(survey.id) !== Number(id));
+    console.log('Updated surveys array:', this.surveys);
+    this.cdr.detectChanges();
   }
 
 }

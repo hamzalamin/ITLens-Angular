@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import {RouterLink} from '@angular/router';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
   imports: [
-    RouterLink
+    RouterLink,
+    NgIf
   ],
   standalone: true,
   templateUrl: './navbar.component.html',

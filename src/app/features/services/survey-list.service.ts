@@ -20,4 +20,9 @@ export class SurveyListService {
     return this.http.post<Survey>(this.apiUrl, survey);
   }
 
+  public deleteSurvey(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+
 }
