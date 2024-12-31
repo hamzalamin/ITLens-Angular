@@ -3,7 +3,6 @@ import {ActivatedRoute, RouterLink} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {SurveyEditionService} from '../../../services/survey-edition.service';
 import {SurveyEdition} from '../../../models/survey-edition.model';
-import {Subject} from '../../../models/subject.model';
 
 @Component({
   selector: 'app-surveys-editions-item',
@@ -15,7 +14,6 @@ import {Subject} from '../../../models/subject.model';
 export class SurveysEditionsItemComponent implements OnInit {
   surveyEdition!: SurveyEdition;
   id!: number;
-  selectedSubject!: Subject;
 
 
   constructor(

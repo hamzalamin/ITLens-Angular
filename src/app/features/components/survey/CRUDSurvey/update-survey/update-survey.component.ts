@@ -2,13 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {Survey} from '../../../../models/survey.model';
 import {SurveyListService} from '../../../../services/survey-list.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-update-survey',
   imports: [
-    NgIf,
     FormsModule
   ],
   standalone: true,
