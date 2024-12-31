@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Question} from '../../models/question.model';
+import {Question} from '../../../questions/model/question.model';
 import {ActivatedRoute} from '@angular/router';
-import {AnswerService} from '../../services/answer.service';
+import {AnswerService} from '../../service/answer.service';
 
 @Component({
   selector: 'app-answer',

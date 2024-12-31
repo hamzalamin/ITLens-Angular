@@ -1,4 +1,4 @@
-import {Question} from './question.model';
+import {Question} from '../../questions/model/question.model';
 
 export interface Subject {
   id: String,

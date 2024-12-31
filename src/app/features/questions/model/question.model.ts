@@ -1,4 +1,4 @@
-import {Answer} from './answer.model';
+import {Answer} from '../../answers/model/answer.model';
 
 export interface Question {
   id: string,

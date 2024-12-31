@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {CommonModule} from '@angular/common';
-import {SurveyEditionService} from '../../../services/survey-edition.service';
-import {SurveyEdition} from '../../../models/survey-edition.model';
+import {SurveyEditionService} from '../../service/survey-edition.service';
+import {SurveyEdition} from '../../model/survey-edition.model';
 
 @Component({
   selector: 'app-surveys-editions-item',

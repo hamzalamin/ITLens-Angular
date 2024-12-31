@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {Survey} from '../../../../models/survey.model';
-import {SurveyListService} from '../../../../services/survey-list.service';
+import {Survey} from '../../model/survey.model';
+import {SurveyListService} from '../../service/survey-list.service';
 import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 

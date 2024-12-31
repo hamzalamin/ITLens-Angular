@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AdminComponent} from './features/components/shared/admin/admin.component';
+import {AdminComponent} from './features/shared/admin/admin.component';
 
 @Component({
   selector: 'app-root',

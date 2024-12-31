@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
 import {
   SurveysEditionsItemComponent
-} from './features/components/survey/surveys-editions-item/surveys-editions-item.component';
-import {SurveysListComponent} from './features/components/survey/surveys-list/surveys-list.component';
-import {QuestionComponent} from './features/components/question/question.component';
-import {AnswerComponent} from './features/components/answer/answer.component';
-import {CreateSurveyComponent} from './features/components/survey/CRUDSurvey/create-survey/create-survey.component';
-import {UpdateSurveyComponent} from './features/components/survey/CRUDSurvey/update-survey/update-survey.component';
+} from './features/survey/component/surveys-editions-item/surveys-editions-item.component';
+import {SurveysListComponent} from './features/survey/component/surveys-list/surveys-list.component';
+import {CreateSurveyComponent} from './features/survey/component/create-survey/create-survey.component';
+import {UpdateSurveyComponent} from './features/survey/component/update-survey/update-survey.component';
+import {QuestionComponent} from './features/questions/component/question/question.component';
+import {AnswerComponent} from './features/answers/component/answer/answer.component';
 
 export const routes: Routes = [
   { path: '', component: SurveysListComponent},
