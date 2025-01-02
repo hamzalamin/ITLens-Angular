@@ -17,4 +17,7 @@ export class SurveyEditionService {
     return this.http.get<SurveyEdition>(`${this.apiUrl}/${id}`);
   }
 
+  createSurveyEdition(surveyEdition: SurveyEdition): Observable<SurveyEdition>{
+    return this.http.post<SurveyEdition>(this.apiUrl, surveyEdition)
+  }
 }

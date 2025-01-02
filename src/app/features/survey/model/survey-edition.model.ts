@@ -6,6 +6,7 @@ export interface SurveyEdition {
   creationDate: String,
   startDate: String,
   date: String,
-  survey: Survey,
+  surveyId?: string,
+  survey?: Survey,
   subjects: Subject[]
 }

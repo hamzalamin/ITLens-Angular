@@ -24,8 +24,8 @@ export class CreateSurveyComponent {
 
   constructor(private surveyService: SurveyListService, private router: Router) {}
 
-  onCreateSurvey() {
-    this.surveyService.createSurveys(this.newSurvey).subscribe({
+  onCreateSurvey(survey: Survey) {
+    this.surveyService.createSurveys(survey).subscribe({
       next: (createdSurvey) => {
         console.log(createdSurvey);
         this.router.navigate(['/'])
