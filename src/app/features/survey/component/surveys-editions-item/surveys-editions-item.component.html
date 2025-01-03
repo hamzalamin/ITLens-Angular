@@ -1,12 +1,25 @@
 <div class="min-h-screen bg-gradient-to-r from-violet-200 to-violet-400 p-6 mt-12">
   @if (surveyEdition) {
     <div class="bg-violet-100 rounded-lg shadow-sm p-6 mb-6 border border-violet-300">
-      <div class="mb-6">
+
+      <div class="mb-6 flex justify-between">
         <h1 class="flex items-baseline gap-3">
           <span class="text-2xl font-mono text-violet-700">Survey Title:</span>
           <span class="text-3xl font-mono text-gray-800">{{ surveyEdition.survey?.title }}</span>
         </h1>
+        <div class="">
+          <button
+            class="px-4 py-2 bg-violet-600 text-white rounded-md hover:bg-violet-700 transition duration-200 font-mono flex items-center space-x-2"
+            [routerLink]="['/participate/survey/edition', surveyEdition.id]"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            <span>Join the Survey</span>
+          </button>
+        </div>
       </div>
+
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div class="bg-violet-50 p-4 rounded-md shadow-sm border border-violet-300">
           <span class="text-sm font-mono text-violet-600">Year</span>
@@ -21,6 +34,7 @@
           <p class="text-lg font-mono font-semibold text-violet-800">{{ surveyEdition.startDate }}</p>
         </div>
       </div>
+
     </div>
     <div class="bg-violet-100 rounded-lg shadow-sm p-6 border border-violet-300">
       <h2 class="text-xl font-mono font-semibold text-gray-800 mb-4">Subjects</h2>

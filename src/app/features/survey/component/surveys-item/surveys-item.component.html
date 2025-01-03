@@ -8,13 +8,18 @@
     <div class="flex space-x-2">
       <button class="px-4 py-2 bg-violet-600 text-white rounded-md hover:bg-violet-700 transition"
               (click)="onEdit(survey)">
-        Update
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 3l9 9-4 4-9-9 4-4zM12 12l-9 9v-6H3V3h15v15h-6l-9-9z"/>
+        </svg>
       </button>
       <button
         class="px-4 py-2 bg-violet-600 text-white rounded-md hover:bg-violet-700 transition"
         (click)="onDelete(survey.id.toString())"
       >
-        Delete
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+
       </button>
     </div>
   </div>

@@ -1,0 +1,68 @@
+<section class="bg-gradient-to-r from-violet-200 to-violet-400 py-16">
+  <div class="relative w-3/4 bg-gray-200 h-2 rounded-full mb-20 mx-auto">
+    <div
+      class="absolute top-0 left-0 h-full bg-violet-500 rounded-full transition-all duration-300"
+      [style.width.%]="((currentQuestionIndex + 1) / questions.length) * 100">
+    </div>
+  </div>
+  <div class="container mx-auto px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl font-mono text-gray-800 mb-8 mt-8">
+        @if (surveyEdition) {
+          Join Us in Shaping the Future – Welcome to the Participation Hub in
+          {{ surveyEdition.survey?.title }} of edition {{ surveyEdition.date }}!
+        } @else {
+          <span>Loading survey data...</span>
+        }
+      </h1>
+    </div>
+  </div>
+
+
+  @if (questions && questions.length > 0) {
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8">
+        <p class="text-lg font-mono text-gray-800 mb-3">
+          Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}
+        </p>
+        <p class="text-lg font-mono text-gray-800">
+          {{ questions[currentQuestionIndex].text }}
+        </p>
+
+        <div class="mt-4">
+          @if (questions[currentQuestionIndex].answers.length > 0) {
+            <p class="text-lg font-mono text-gray-800 mb-4">Answers:</p>
+            @for (answer of questions[currentQuestionIndex].answers; track answer.id) {
+              <label class="block mb-2">
+                <input type="checkbox" class="mr-2">
+                {{ answer.text }}
+              </label>
+            }
+          }
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flex justify-between mt-6">
+          <button
+            class="bg-gray-300 text-gray-800 py-2 px-4 rounded hover:bg-gray-400"
+            [disabled]="currentQuestionIndex === 0"
+            (click)="previousQuestion()"
+          >
+            Previous
+          </button>
+          <button
+            class="bg-violet-500 text-white py-2 px-4 rounded hover:bg-violet-700"
+            [disabled]="currentQuestionIndex === questions.length - 1"
+            (click)="nextQuestion()"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="container mx-auto px-4">
+      <p>No questions available.</p>
+    </div>
+  }
+</section>

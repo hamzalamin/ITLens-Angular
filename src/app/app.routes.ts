@@ -7,6 +7,7 @@ import {CreateSurveyComponent} from './features/survey/component/create-survey/c
 import {UpdateSurveyComponent} from './features/survey/component/update-survey/update-survey.component';
 import {QuestionComponent} from './features/questions/component/question/question.component';
 import {AnswerComponent} from './features/answers/component/answer/answer.component';
+import {ParticipateComponent} from './features/participates/component/participate/participate.component';
 
 export const routes: Routes = [
   { path: '', component: SurveysListComponent},
@@ -15,5 +16,6 @@ export const routes: Routes = [
   { path: 'subject/:id/questions', component: QuestionComponent },
   { path: 'question/:id/answers', component: AnswerComponent },
   { path: 'create/survey', component: CreateSurveyComponent},
-  {  path: 'surveys-update/:id', component: UpdateSurveyComponent}
+  { path: 'surveys-update/:id', component: UpdateSurveyComponent},
+  { path: 'participate/survey/edition/:id', component: ParticipateComponent}
 ];
