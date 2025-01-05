@@ -3,10 +3,14 @@ import {SurveyEdition} from '../../../survey/model/survey-edition.model';
 import {SurveyEditionService} from '../../../survey/service/survey-edition.service';
 import {ActivatedRoute} from '@angular/router';
 import {Question} from '../../../questions/model/question.model';
+import {FormsModule} from '@angular/forms';
+import {Answer} from '../../../answers/model/answer.model';
 
 @Component({
   selector: 'app-participate',
-  imports: [],
+  imports: [
+    FormsModule
+  ],
   standalone: true,
   templateUrl: './participate.component.html',
   styleUrl: './participate.component.css'
@@ -63,6 +67,23 @@ export class ParticipateComponent implements OnInit {
     if (this.currentQuestionIndex > 0) {
       this.currentQuestionIndex--;
     }
+  }
+  checkedAnswers: Set<string> = new Set();
+
+  isChecked(answerId: string): boolean {
+    return this.checkedAnswers.has(answerId);
+  }
+
+  toggleCheck(answerId: string): void {
+    if (this.checkedAnswers.has(answerId)) {
+      this.checkedAnswers.delete(answerId);
+    } else {
+      this.checkedAnswers.add(answerId);
+    }
+  }
+
+  getLabelClasses(answerId: string): string {
+    return `answer-label ${this.isChecked(answerId) ? 'checked' : 'unchecked'}`;
   }
 
 }

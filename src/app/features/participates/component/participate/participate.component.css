@@ -1,0 +1,26 @@
+.answer-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 0.375rem;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+  color: rgb(91, 33, 182);
+}
+
+.answer-label:hover {
+  background-color: rgb(243, 232, 255);
+}
+
+.unchecked {
+  border-color: rgb(229, 231, 235);
+}
+
+.checked {
+  border-color: rgb(124, 58, 237);
+  background-color: rgb(237, 233, 254);
+}

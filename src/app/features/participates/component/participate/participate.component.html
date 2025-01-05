@@ -1,10 +1,4 @@
 <section class="bg-gradient-to-r from-violet-200 to-violet-400 py-16">
-  <div class="relative w-3/4 bg-gray-200 h-2 rounded-full mb-20 mx-auto">
-    <div
-      class="absolute top-0 left-0 h-full bg-violet-500 rounded-full transition-all duration-300"
-      [style.width.%]="((currentQuestionIndex + 1) / questions.length) * 100">
-    </div>
-  </div>
   <div class="container mx-auto px-4">
     <div class="max-w-3xl mx-auto text-center">
       <h1 class="text-4xl font-mono text-gray-800 mb-8 mt-8">
@@ -15,6 +9,12 @@
           <span>Loading survey data...</span>
         }
       </h1>
+    </div>
+    <div class="relative w-3/4 bg-gray-200 h-2 rounded-full mb-20 mx-auto">
+      <div
+        class="absolute top-0 left-0 h-full bg-violet-500 rounded-full transition-all duration-300"
+        [style.width.%]="((currentQuestionIndex + 1) / questions.length) * 100">
+      </div>
     </div>
   </div>
 
@@ -33,15 +33,19 @@
           @if (questions[currentQuestionIndex].answers.length > 0) {
             <p class="text-lg font-mono text-gray-800 mb-4">Answers:</p>
             @for (answer of questions[currentQuestionIndex].answers; track answer.id) {
-              <label class="block mb-2">
-                <input type="checkbox" class="mr-2">
-                {{ answer.text }}
+              <label [class]="getLabelClasses(answer.id)">
+                <div class="flex items-center">
+                  <input type="checkbox"
+                         class="mr-2"
+                         [checked]="isChecked(answer.id)"
+                         (change)="toggleCheck(answer.id)">
+                  <span>{{ answer.text }}</span>
+                </div>
               </label>
             }
           }
         </div>
 
-        <!-- Navigation Buttons -->
         <div class="flex justify-between mt-6">
           <button
             class="bg-gray-300 text-gray-800 py-2 px-4 rounded hover:bg-gray-400"
