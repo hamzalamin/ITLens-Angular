@@ -4,7 +4,7 @@ import {SurveyEditionService} from '../../../survey/service/survey-edition.servi
 import {ActivatedRoute} from '@angular/router';
 import {Question} from '../../../questions/model/question.model';
 import {FormsModule} from '@angular/forms';
-import {Answer} from '../../../answers/model/answer.model';
+import {ParticipateService} from '../../services/participate.service';
 
 @Component({
   selector: 'app-participate',
@@ -20,10 +20,13 @@ export class ParticipateComponent implements OnInit {
   id!: number;
   currentQuestionIndex: number = 0;
   questions: Question[] = [];
+  checkedAnswers: Set<string> = new Set();
+  isSurveyCompleted: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
-    private surveyEditionService: SurveyEditionService
+    private surveyEditionService: SurveyEditionService,
+    private participateService: ParticipateService
   ) {
   }
 
@@ -57,10 +60,30 @@ export class ParticipateComponent implements OnInit {
     }
   }
 
+  isLastQuestion(): boolean {
+    return this.currentQuestionIndex === this.questions.length - 1;
+  }
+
   nextQuestion(): void {
-    if (this.currentQuestionIndex < this.questions.length - 1) {
-      this.currentQuestionIndex++;
-    }
+    const currentQuestion = this.questions[this.currentQuestionIndex];
+    const selectedAnswers = Array.from(this.checkedAnswers);
+
+    this.participateService
+      .submitAnswers(currentQuestion.id.toString(), selectedAnswers)
+      .subscribe({
+        next: () => {
+          this.checkedAnswers.clear();
+          if (this.isLastQuestion()) {
+            this.isSurveyCompleted = true;
+          } else {
+            this.currentQuestionIndex++;
+          }
+        },
+        error: (error) => {
+          console.error('Error submitting answers:', error);
+          alert('Failed to submit answers. Please try again.');
+        },
+      });
   }
 
   previousQuestion(): void {
@@ -68,17 +91,23 @@ export class ParticipateComponent implements OnInit {
       this.currentQuestionIndex--;
     }
   }
-  checkedAnswers: Set<string> = new Set();
 
   isChecked(answerId: string): boolean {
     return this.checkedAnswers.has(answerId);
   }
 
-  toggleCheck(answerId: string): void {
-    if (this.checkedAnswers.has(answerId)) {
-      this.checkedAnswers.delete(answerId);
-    } else {
+  handleSelection(answerId: string): void {
+    const currentQuestion = this.questions[this.currentQuestionIndex];
+
+    if (currentQuestion.questionType === 'SINGLE_CHOICE') {
+      this.checkedAnswers.clear();
       this.checkedAnswers.add(answerId);
+    } else {
+      if (this.checkedAnswers.has(answerId)) {
+        this.checkedAnswers.delete(answerId);
+      } else {
+        this.checkedAnswers.add(answerId);
+      }
     }
   }
 
